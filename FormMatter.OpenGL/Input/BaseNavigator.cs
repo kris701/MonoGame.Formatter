@@ -37,6 +37,15 @@ namespace FormMatter.OpenGL.Input
 		/// </summary>
 		public double Arc { get; set; } = 80;
 
+		/// <summary>
+		/// An offset to the selector
+		/// </summary>
+		public int SelectorOffsetX { get; set; } = 0;
+		/// <summary>
+		/// An offset to the selector
+		/// </summary>
+		public int SelectorOffsetY { get; set; } = 0;
+
 		private static double _rad2Deg = 57.2957795130823209;
 
 		/// <summary>
@@ -268,20 +277,20 @@ namespace FormMatter.OpenGL.Input
 			switch (SelectorLocation)
 			{
 				case NavigatorSelectorLocations.Left:
-					Selector.X = Focused.X - Selector.Width;
-					Selector.Y = Focused.Y + Focused.Height / 2 - Selector.Height / 2;
+					Selector.X = Focused.X - Selector.Width + SelectorOffsetX;
+					Selector.Y = Focused.Y + Focused.Height / 2 - Selector.Height / 2 + SelectorOffsetY;
 					break;
 				case NavigatorSelectorLocations.Right:
-					Selector.X = Focused.X + Focused.Width;
-					Selector.Y = Focused.Y + Focused.Height / 2 - Selector.Height / 2;
+					Selector.X = Focused.X + Focused.Width + SelectorOffsetX;
+					Selector.Y = Focused.Y + Focused.Height / 2 - Selector.Height / 2 + SelectorOffsetY;
 					break;
 				case NavigatorSelectorLocations.Top:
-					Selector.X = Focused.X + Focused.Width / 2 - Selector.Width / 2;
-					Selector.Y = Focused.Y - Selector.Height;
+					Selector.X = Focused.X + Focused.Width / 2 - Selector.Width / 2 + SelectorOffsetX;
+					Selector.Y = Focused.Y - Selector.Height + SelectorOffsetY;
 					break;
 				case NavigatorSelectorLocations.Bottom:
-					Selector.X = Focused.X + Focused.Width / 2 - Selector.Width / 2;
-					Selector.Y = Focused.Y + Focused.Height;
+					Selector.X = Focused.X + Focused.Width / 2 - Selector.Width / 2 + SelectorOffsetX;
+					Selector.Y = Focused.Y + Focused.Height + SelectorOffsetY;
 					break;
 			}
 			Selector.IsVisible = true;
